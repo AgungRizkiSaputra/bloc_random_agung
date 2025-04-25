@@ -1,16 +1,23 @@
-# bloc_random_agung
+# Praktikum 7 : BloC Pattern
 
-A new Flutter project.
+### P7: Jawaban Soal 13
 
-## Getting Started
+Maksud dari praktikum ini adalah menjelaskan bagaimana cara mengimplementasikan BloC atau "Business Logic Component" yang memiliki lapisan antara semua sumber data dan UI. Alasan utama menggunakan BLoC adalah memisahkan logika bisnis aplikasi dengan presentasi UI.
 
-This project is a starting point for a Flutter application.
+#### Letak Konsepnya
 
-A few resources to get you started if this is your first Flutter project:
+1. Class RandomNumberBloc
+   Class ini bertanggung jawab untuk menangani logika bisnis, yaitu menghasilkan angka acak dan mengalirkannya ke UI melalui Stream.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+   - generateRandom: merupakan event input dalam bentuk Sink<void>. Event ini akan memicu BLoC untuk menghasilkan angka acak.
+   - randomNumber: merupakan state output dalam bentuk Stream<int> yang akan didengarkan oleh UI.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Widget StreamHomepage
+
+   - StreamBuilder mendengarkan randomNumber dari BLoC.
+   - Saat data di Stream berubah, builder akan dipanggil ulang untuk memperbarui UI dengan data terbaru.
+
+3. Trigger melalui FloatingActionButton
+   - Saat tombol ditekan, event null dikirim ke generateRandom, yang men-trigger logika untuk menghasilkan angka acak.
+
+<img src="https://github.com/AgungRizkiSaputra/bloc_random_agung/blob/main/image/GIFP7soal13.gif" width="150px">
